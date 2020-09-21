@@ -1,0 +1,29 @@
+body{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    padding: 2%;
+    margin: 40px 0;
+    background-color: wheat;
+    border: solid black 2px;
+    border-radius: 15px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: left;
+
+}

@@ -1,0 +1,37 @@
+<%- include('../partials/head'); %>
+
+<body>
+    <div class="flex">
+        <%- include('../partials/nav'); %>
+        <%console.log(data2)%>
+        <img src="<%=data.image_url%>" alt="">
+        <h2><%=data.title%></h2>
+        <h3><%=data.author%></h3>
+        <p><%=data.isbn%></p>
+        <p><%=data.categories%></p>
+        <p><%=data.description%></p>
+        <form action="/deleteBook/<%=data.id%>?_method=delete" method="POST">
+            <button>delete</button>
+        </form>
+        <form action="/updateBook/<%=data.id%>?_method=put" method="POST">
+            <input type="text" name="image_url" value="<%=data.image_url%>">
+            <input type="text" name="title" value="<%=data.title%>">
+            <input type="text" name="author" value="<%=data.author%>">
+            <input type="text" name="isbn" value="<%=data.isbn%>">
+            <input type="text" name="description" value="<%=data.description%>">
+            <select name="categories">
+                <option selected value="<%=data.categories%>"> <%=data.categories%> </option>
+                <% data2.forEach(item=>{ %>
+                <% if(data.categories != item.categories){ %>
+                <option value="<%=item.categories%>"> <%=item.categories%> </option>
+                <% } %>
+                <% }) %>
+            </select>
+            <button>update</button>
+        </form>
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<%- include('../partials/head'); %>
+
+<body>
+    <%- include('../partials/nav'); %>
+
+    <h1><%=data.length%> Saved Books</h1>
+
+    <%data.forEach(item=>{%>
+    <div class="flex">
+        <img src="<%=item.image_url%>" alt="">
+        <h2><%=item.title%></h2>
+        <h3><%=item.author%></h3>
+        <p><%=item.isbn%></p>
+        <p><%=item.categories%></p>
+        <p><%=item.description%></p>
+        <form action="/book/<%=item.id%>">
+            <button>details</button>
+        </form>
+
+
+    </div>
+
+    <%})%>
+</body>
+
+</html>

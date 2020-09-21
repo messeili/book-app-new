@@ -1,0 +1,31 @@
+<%- include('../partials/head'); %>
+
+<body>
+    <nav>
+        <%- include('../partials/nav'); %>
+    </nav>
+    <%data.forEach(item=>{%>
+    <div class="flex">
+        <img src="<%=item.image_url%>" alt="">
+        <h2><%=item.title%></h2>
+        <h3><%=item.author%></h3>
+        <p><%=item.isbn%></p>
+        <p><%=item.categories%></p>
+        <p><%=item.description%></p>
+        <form action="/addBooks" method="post">
+            <input type="hidden" name="image_url" value="<%=item.image_url%>">
+            <input type="hidden" name="title" value="<%=item.title%>">
+            <input type="hidden" name="author" value="<%=item.author%>">
+            <input type="hidden" name="isbn" value="<%=item.isbn%>">
+            <input type="hidden" name="description" value="<%=item.description%>">
+            <input type="hidden" name="categories" value="<%=item.categories%>">
+            <button>add this Book</button>
+        </form>
+
+
+    </div>
+
+    <%})%>
+</body>
+
+</html>

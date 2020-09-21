@@ -1,0 +1,16 @@
+<%- include('../partials/head'); %>
+
+<body>
+    <%- include('../partials/nav'); %>
+
+    <form action="/searches/show" method="post" class='form'>
+        <input type="text" name="search" value="" placeholder="Enter book name">
+        <label for="inauthor">Author</label>
+        <input type="radio" name="titleAuthor" id="inauthor" value="inauthor">
+        <label for="intitle">Title</label>
+        <input type="radio" name="titleAuthor" id="intitle" value="intitle">
+        <button>Search in API</button>
+    </form>
+</body>
+
+</html>
