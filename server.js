@@ -33,7 +33,7 @@ app.put('/updateBook/:id', updateBookHandler)
 
 //functions
 function mainRouteHandler(req, res) {
-    let SQL = `SELECT image_url,title,author FROM book1;`
+    let SQL = `SELECT image_url,title,author FROM book1 ORDER BY id DESC;`
     client.query(SQL).then((results) => {
         res.render('pages/index', { data: results.rows })
     })
@@ -61,12 +61,19 @@ function addBookHandler(req, res) {
     let SQL = `INSERT INTO book1 (image_url,title,author,isbn,description,categories) VALUES ($1,$2,$3,$4,$5,$6);`
     let VALUES = [image_url, title, author, isbn, description, categories];
     client.query(SQL, VALUES).then(() => {
-        res.redirect('/savedBooks')
+        let SQL1 = `SELECT id FROM book1 WHERE isbn=$1;`;
+        let VALUES1 = [isbn]
+        client.query(SQL1, VALUES1).then((results) => {
+            console.log(results.rows[0].id);
+            let id = results.rows[0].id
+            res.redirect(`/book/${id}`)
+
+        })
     })
 }
 
 function savedBooksHandler(req, res) {
-    let SQL = `SELECT * FROM book1;`
+    let SQL = `SELECT * FROM book1 ORDER BY id DESC;`
     client.query(SQL).then((results) => {
         res.render('pages/savedBooks', { data: results.rows })
     })
